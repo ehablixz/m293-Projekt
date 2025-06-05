@@ -1,0 +1,341 @@
+/* Grundlegende Reset- und Box-Modell-Einstellungen */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Neue Farbpalette - Abenteuerlicher / Mystischer */
+    --bg-main: #1e2d3b; /* Dunkelblau/Grau für den Hintergrund */
+    --bg-content: #2c3e50; /* Etwas helleres Blau/Grau für Content-Boxen */
+    --primary-accent: #e74c3c; /* Kräftiges Rot als Hauptakzent */
+    --secondary-accent: #f1c40f; /* Gold/Gelb für sekundäre Akzente */
+    --text-light: #ecf0f1; /* Helles Grau/Weiß für Text */
+    --text-medium: #bdc3c7; /* Mittleres Grau für weniger wichtigen Text */
+    --text-dark: #1a1a1a; /* Sehr dunkler Text für Kontrast auf hellen Flächen (falls benötigt) */
+    --border-color: #34495e; /* Dunkle Randfarbe */
+
+    /* Schriftarten */
+    --font-primary: 'Georgia', serif; /* Eine Serifenschrift für einen "epischen" Touch */
+    --font-secondary: 'Lato', sans-serif; /* Eine saubere Sans-Serif für Lesbarkeit */
+}
+
+body {
+    font-family: var(--font-secondary);
+    line-height: 1.7;
+    color: var(--text-light);
+    background-color: var(--bg-main);
+    font-size: 16px;
+}
+
+/* Header-Styling */
+header {
+    background-color: rgba(30, 45, 59, 0.85); /* Leicht transparenter Header */
+    backdrop-filter: blur(5px); /* Frost-Effekt */
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary-accent);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo span {
+    font-size: 2.8rem;
+    margin-right: 12px;
+    color: var(--secondary-accent);
+    text-shadow: 0 0 5px var(--secondary-accent);
+}
+
+.logo h1 {
+    font-family: var(--font-primary);
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav a {
+    font-family: var(--font-secondary);
+    color: var(--text-medium);
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 600; /* Semi-bold */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    padding: 8px 4px;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+nav a:hover, nav a.active { /* Angenommen, es gäbe eine .active Klasse für die aktuelle Seite */
+    color: var(--secondary-accent);
+    text-shadow: 0 0 8px var(--secondary-accent);
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-accent);
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+nav a:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(30, 45, 59, 0.7), rgba(30, 45, 59, 0.9)), url('/media/TerrariaBG.png') no-repeat center center/cover;
+    color: var(--text-light);
+    text-align: center;
+    padding: 120px 20px 80px; /* Mehr Padding oben */
+    min-height: 60vh; /* Höhe relativ zum Viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid var(--primary-accent);
+}
+
+.hero-content h2 {
+    font-family: var(--font-primary);
+    font-size: 3.8rem; /* Größer */
+    color: var(--text-light);
+    margin-bottom: 25px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5), 0 0 15px var(--primary-accent);
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 1.4rem;
+    margin-bottom: 45px;
+    color: var(--text-medium);
+    line-height: 1.8;
+}
+
+.cta-button {
+    background: var(--primary-accent);
+    color: var(--text-light);
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 50px; /* Pillenförmig */
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.cta-button:hover {
+    background: #c0392b; /* Dunkleres Rot */
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(231, 76, 60, 0.6);
+}
+
+/* Main Content Sections */
+main {
+    max-width: 1100px; /* Etwas schmaler für besseren Lesefluss */
+    margin: 50px auto;
+    padding: 0 25px;
+}
+
+.intro-section, .features-section {
+    background: var(--bg-content);
+    padding: 50px 40px;
+    border-radius: 12px; /* Stärkere Abrundung */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    margin-bottom: 50px;
+    border-left: 5px solid var(--secondary-accent);
+}
+
+.intro-section h3, .features-section h3 {
+    font-family: var(--font-primary);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 35px;
+    color: var(--text-light);
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.intro-section h3::after, .features-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-accent);
+}
+
+.intro-section p {
+    font-size: 1.15rem;
+    color: var(--text-medium);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Größere Min-Breite */
+    gap: 35px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background: var(--bg-main); /* Dunkler als der Section-Hintergrund */
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-top: 4px solid var(--border-color);
+}
+
+.feature-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-accent);
+    border-top-color: var(--primary-accent);
+}
+
+.feature-item h4 {
+    font-family: var(--font-primary);
+    font-size: 1.7rem;
+    color: var(--secondary-accent);
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+}
+
+/* Footer Styling */
+footer {
+    background: var(--bg-content);
+    color: var(--text-medium);
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.95rem;
+    margin-top: 60px;
+    border-top: 3px solid var(--primary-accent);
+}
+
+footer p {
+    margin-bottom: 8px;
+}
+
+footer p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content h2 {
+        font-size: 3rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    nav {
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 0 12px;
+        font-size: 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .intro-section h3, .features-section h3 {
+        font-size: 2rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr; /* Eine Spalte auf kleinen Bildschirmen */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    .logo h1 {
+        font-size: 1.7rem;
+    }
+    .logo span {
+        font-size: 2.2rem;
+    }
+    nav a {
+        font-size: 0.9rem;
+        margin: 0 8px;
+    }
+    .hero-section {
+        padding-top: 80px;
+        padding-bottom: 60px;
+    }
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .cta-button {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    .intro-section, .features-section {
+        padding: 30px 20px;
+    }
+    .intro-section h3, .features-section h3 {
+        font-size: 1.8rem;
+    }
+    .feature-item h4 {
+        font-size: 1.5rem;
+    }
+}
