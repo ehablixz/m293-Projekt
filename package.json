@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "minify-css": "del /f /q dist\\style.css && npx css-minify -d ./src -o ./dist && move dist\\style.min.css dist\\style.css",
-    "minify-html": "npx html-minifier --input-dir ./src --output-dir ./dist --collapse-whitespace --file-ext html",
+    "minify-css": "del /f /q docs\\style.css && npx css-minify -d ./src -o ./docs && move docs\\style.min.css docs\\style.css",
+    "minify-html": "npx html-minifier --input-dir ./src --output-dir ./docs --collapse-whitespace --file-ext html",
     "minify": "npm run minify-html && npm run minify-css",
-    "build": "npm run minify && xcopy src\\media dist\\media /e /i /y"
+    "build": "npm run minify && xcopy src\\media docs\\media /e /i /y"
   },
   "author": "",
   "license": "ISC",
