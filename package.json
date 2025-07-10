@@ -7,7 +7,8 @@
     "minify-css": "del /f /q docs\\style.css && npx css-minify -d ./src -o ./docs && move docs\\style.min.css docs\\style.css",
     "minify-html": "npx html-minifier --input-dir ./src --output-dir ./docs --collapse-whitespace --file-ext html",
     "minify": "npm run minify-html && npm run minify-css",
-    "build": "npm run minify && xcopy src\\media docs\\media /e /i /y"
+    "build": "npm run minify && xcopy src\\media docs\\media /e /i /y",
+    "deploy": "npm run build && git add . && git commit -m \"npm run deploy\" && git push"
   },
   "author": "",
   "license": "ISC",
